@@ -1,0 +1,25 @@
+name: loja_online
+description: Projeto P2 - Etapas 1, 2, 3 e 4 (completo)
+
+publish_to: 'none'
+version: 2.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  # Etapa 3: requisições HTTP
+  http: ^1.2.0
+  # Etapa 3: persistência local (sessão de login)
+  shared_preferences: ^2.2.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
