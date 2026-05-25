@@ -24,7 +24,6 @@ class _LoginScreenState extends State<LoginScreen> {
   String? _errorMessage;
   bool _isLoading = false;
 
-  // Etapa 3: login assíncrono com Future/async/await
   Future<void> _login() async {
     final username = _usernameController.text.trim();
     final password = _passwordController.text.trim();
@@ -40,11 +39,9 @@ class _LoginScreenState extends State<LoginScreen> {
     });
 
     try {
-      // Etapa 3: await na requisição HTTP → retorna token ou null
       final token = await ApiService.login(username, password);
 
       if (token != null) {
-        // Etapa 3: salva sessão no dispositivo (SharedPreferences)
         await AuthService.saveSession(
           token: token,
           username: username,
@@ -52,7 +49,6 @@ class _LoginScreenState extends State<LoginScreen> {
         );
 
         if (mounted) {
-          // Etapa 2: Navigator.pushReplacement para não voltar ao login
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (_) => const ProductListScreen()),
@@ -63,8 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
       }
     } catch (_) {
       setState(
-        () => _errorMessage = 'Erro de conexão. Verifique sua internet.',
-      );
+          () => _errorMessage = 'Erro de conexão. Verifique sua internet.');
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }
@@ -87,15 +82,9 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                'Minha aplicação',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              const Text('Minha aplicação',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
               const SizedBox(height: 40),
-
               TextField(
                 controller: _usernameController,
                 decoration: const InputDecoration(
@@ -106,7 +95,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(height: 16),
-
               TextField(
                 controller: _passwordController,
                 obscureText: true,
@@ -118,19 +106,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 onSubmitted: (_) => _login(),
               ),
-
               if (_errorMessage != null) ...[
                 const SizedBox(height: 8),
-                Text(
-                  _errorMessage!,
-                  style: const TextStyle(
-                    color: Colors.red,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
+                Text(_errorMessage!,
+                    style: const TextStyle(
+                        color: Colors.red, fontWeight: FontWeight.w500)),
               ],
               const SizedBox(height: 20),
-
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
@@ -140,34 +122,23 @@ class _LoginScreenState extends State<LoginScreen> {
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
+                        borderRadius: BorderRadius.circular(8)),
                   ),
                   child: _isLoading
                       ? const SizedBox(
                           height: 20,
                           width: 20,
                           child: CircularProgressIndicator(
-                            color: Colors.white,
-                            strokeWidth: 2,
-                          ),
-                        )
+                              color: Colors.white, strokeWidth: 2))
                       : const Text('Login', style: TextStyle(fontSize: 16)),
                 ),
               ),
               const SizedBox(height: 20),
-
-              const Text(
-                'Esqueceu a senha?',
-                style: TextStyle(color: Colors.grey),
-              ),
+              const Text('Esqueceu a senha?',
+                  style: TextStyle(color: Colors.grey)),
               const SizedBox(height: 8),
-              const Text(
-                'Não tem uma conta? Cadastre-se',
-                style: TextStyle(color: Colors.grey),
-              ),
-
-              // Dica de credenciais para teste com a fakestoreapi
+              const Text('Não tem uma conta? Cadastre-se',
+                  style: TextStyle(color: Colors.grey)),
               const SizedBox(height: 32),
               Container(
                 padding: const EdgeInsets.all(12),
@@ -178,17 +149,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 child: const Column(
                   children: [
-                    Text(
-                      'Credenciais de teste (fakestoreapi):',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12,
-                      ),
-                    ),
+                    Text('Credenciais de teste (fakestoreapi):',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 12)),
                     SizedBox(height: 4),
                     Text(
-                      'Usuário: mor_2314
-Senha: 83r5^_',
+                      'Usuário: mor_2314\nSenha: 83r5^_',
                       style: TextStyle(fontSize: 12, fontFamily: 'monospace'),
                       textAlign: TextAlign.center,
                     ),

@@ -84,8 +84,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
   }
 
   // Etapa 4: conta total de unidades no carrinho para o badge
-  int get _cartCount =>
-      _cart.fold(0, (sum, item) => sum + item.quantity);
+  int get _cartCount => _cart.fold(0, (sum, item) => sum + item.quantity);
 
   @override
   Widget build(BuildContext context) {

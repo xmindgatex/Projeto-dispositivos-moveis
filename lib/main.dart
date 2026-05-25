@@ -69,8 +69,6 @@ class _AuthGateState extends State<AuthGate> {
         body: Center(child: CircularProgressIndicator()),
       );
     }
-    return _isLoggedIn
-        ? const ProductListScreen()
-        : const LoginScreen();
+    return _isLoggedIn ? const ProductListScreen() : const LoginScreen();
   }
 }

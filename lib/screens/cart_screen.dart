@@ -83,9 +83,11 @@ class _CartScreenState extends State<CartScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.shopping_cart_outlined, size: 64, color: Colors.grey),
+                  Icon(Icons.shopping_cart_outlined,
+                      size: 64, color: Colors.grey),
                   SizedBox(height: 16),
-                  Text('Carrinho vazio', style: TextStyle(color: Colors.grey, fontSize: 18)),
+                  Text('Carrinho vazio',
+                      style: TextStyle(color: Colors.grey, fontSize: 18)),
                 ],
               ),
             )
@@ -153,8 +155,7 @@ class _CartScreenState extends State<CartScreen> {
                                 children: [
                                   _QuantityButton(
                                     icon: Icons.remove,
-                                    onPressed: () =>
-                                        _changeQuantity(index, -1),
+                                    onPressed: () => _changeQuantity(index, -1),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
@@ -170,8 +171,7 @@ class _CartScreenState extends State<CartScreen> {
                                   ),
                                   _QuantityButton(
                                     icon: Icons.add,
-                                    onPressed: () =>
-                                        _changeQuantity(index, 1),
+                                    onPressed: () => _changeQuantity(index, 1),
                                   ),
                                 ],
                               ),
